@@ -25,6 +25,11 @@ public class StudentController {
     private StudentService studentService;
 
 
+    /**
+     * return paginated list of student
+     * @param studentDto
+     * @return
+     */
     @PostMapping("/v1/list")
     public ResponseHelper getStudentList(@RequestBody StudentDto studentDto) {
 
