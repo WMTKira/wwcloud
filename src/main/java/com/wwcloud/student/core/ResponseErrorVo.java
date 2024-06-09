@@ -1,6 +1,6 @@
 package com.wwcloud.student.core;
 
-import org.springframework.util.ObjectUtils;
+
 
 /**
  * @author wmtumanday
@@ -31,9 +31,6 @@ public class ResponseErrorVo {
     }
     public void setMessage(String message) {
         this.message = message;
-    }
-    public String getDescription() {
-        return ObjectUtils.isEmpty(description) ? message : description;
     }
     public void setDescription(String description) {
         this.description = description;

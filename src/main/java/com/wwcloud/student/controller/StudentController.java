@@ -7,8 +7,10 @@ import com.wwcloud.student.core.ResponseVO;
 import com.wwcloud.student.dto.StudentDto;
 import com.wwcloud.student.model.StudentModel;
 import com.wwcloud.student.service.StudentService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -18,7 +20,8 @@ import java.util.List;
 /**
  * @author wmtumanday
  */
-@RestController("/student")
+@RequestMapping("/student")
+@RestController
 public class StudentController {
 
     @Resource
@@ -30,12 +33,11 @@ public class StudentController {
      * @param studentDto
      * @return
      */
-    @PostMapping("/v1/list")
-    public ResponseHelper getStudentList(@RequestBody StudentDto studentDto) {
 
-        PageHelper.startPage(studentDto.getPageNum(), studentDto.getPageSize());
+    @PostMapping("/list")
+    public ResponseEntity getStudentList(@RequestBody StudentDto studentDto) {
         PageInfo<StudentModel> pageInfo = studentService.getStudentList(studentDto);
-        return new ResponseHelper().addData(pageInfo);
+        return ResponseEntity.ok(pageInfo);
     }
 
 
